@@ -39,10 +39,19 @@ hotel.service:
   name: 'default profile:'
 ---
 spring:
-  profiles: test
+  profiles: mysql
 
-spring.jpa:
-    hibernate.ddl-auto: create-drop
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bootexample
+    username: root
+    password: C375366a7x*G
+
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLInnoDBDialect
+      ddl-auto: update # todo: in non-dev environments, comment this out:
+
 
 hotel.service:
   name: 'test profile:'
